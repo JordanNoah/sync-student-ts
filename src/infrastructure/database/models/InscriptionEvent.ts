@@ -20,8 +20,8 @@ interface InscriptionEventRow {
 
 export class InscriptionEventSequelize extends Model<InscriptionEventRow, Omit<InscriptionEventRow, 'id'>> {
     declare id: number;
-    declare uuid_external_inscription: string | null;
-    declare data: string | null;
+    declare uuid_external_inscription: string;
+    declare data: string;
     declare is_forced: boolean; // Nueva columna añadida
     declare processed_at: Date | null;
     declare status_transaction_catalog_id: number;

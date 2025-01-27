@@ -18,7 +18,7 @@ export class EventReceivingQueueLogSequelize extends Model<EventReceivingQueueLo
     declare id: number;
     declare event_receiving_queue_id: number;
     declare status_transaction_catalog_id: number;
-    declare attempts: number | null;
+    declare attempts: number;
     declare params: string | null;
     declare readonly createdAt: Date;
     declare readonly updatedAt: Date;

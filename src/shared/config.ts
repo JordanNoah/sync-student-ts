@@ -25,5 +25,5 @@ export default {
     EMAIL_USER: process.env.EMAIL_USER ?? "",
     EMAIL_PASS: process.env.EMAIL_PASS ?? "",
     FROM_EMAIL: process.env.FROM_EMAIL ?? "test@funiber.org",
-
+    EDUCATIONALSYN_URL: process.env.EDUCATIONALSYN_URL ?? "http://localhost:3000",
 }

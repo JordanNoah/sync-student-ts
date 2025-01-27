@@ -2,6 +2,7 @@ import {Channel, connect, Connection} from 'amqplib'
 import AppConfig from '../../shared/config'
 import { assertExchange, assertQueue, eventList, config } from './config'
 import { EventDto } from '../../domain/dtos/event/event.dto'
+import { performance } from 'perf_hooks';
 
 export class Rabbitmq {
     private static _connection: Connection
@@ -60,13 +61,16 @@ export class Rabbitmq {
     }
 
     private static async messageProcessor(msg: EventDto) {
+        const inicio = performance.now();
         const eventProcessor = eventList.get(msg.properties.type)
         if (eventProcessor){
             await eventProcessor(JSON.parse(msg.content))
         } else {
             console.error(`Event not found: ${msg.properties.type}`);
         }
-        //this._channel.ack(msg)
+        this._channel.ack(msg)
+        const fin = performance.now();
+        console.log(`La función tardó ${(fin - inicio).toFixed(2)} ms en ejecutarse.`);
     }
 
     public static async init() {
