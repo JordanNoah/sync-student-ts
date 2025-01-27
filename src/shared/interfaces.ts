@@ -246,3 +246,24 @@ export interface EnrollmentMoodleInterface {
 }
 
 export interface MapperAcademicElement {uuid:string,startedAt:number,finishedAt?:number}
+
+export interface VersionMigrationInterface {
+  id: number;
+  version: string;
+  programMigrationId: number;
+  createdAt?: Date;
+  updatedAt?: Date;
+  deletedAt?: Date | null;
+  programMigration?: ProgramMigrationInteface;
+}
+
+export interface ProgramMigrationInteface {
+  id: number;
+  uuid: string;
+  abbreviation: string;
+  params: string | null;
+  createdAt?: Date;
+  updatedAt?: Date;
+  deletedAt?: Date | null;
+  versions?: VersionMigrationInterface[];
+}

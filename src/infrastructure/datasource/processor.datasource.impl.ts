@@ -8,6 +8,8 @@ import UserDatasourceImpl from "./user.datasource.impl";
 import AcademicElementDto from "@/domain/dtos/signUp/academicElement.dto";
 import CourseDatasourceImpl from "./course.datasource.impl";
 import GroupsManagerDatasourceImpl from "./group.datasource.impl";
+import OrganizationDatasourceImpl from "./organization.datasource.impl";
+import DegreeDto from "@/domain/dtos/signUp/degree.dto";
 
 export default class ProcessorDatasourceImpl implements ProcessorDatasource {
     sleep(ms:number) {
@@ -170,5 +172,45 @@ export default class ProcessorDatasourceImpl implements ProcessorDatasource {
             }
         }
 
+    }
+
+    async signUpDevelop(): Promise<void>{
+        try {
+            //codigo de obtencion de universidades por reglas de negocio
+            const universities:DegreeDto[] = [
+                {
+                    active: true,
+                    status: "Creada",
+                    incidence: " - ",
+                    abbreviation: "UNINIMX",
+                    reference_id: 1498242
+                },
+                {
+                    active: true,
+                    status: "Creada",
+                    incidence: " - ",
+                    abbreviation: "UEA",
+                    reference_id: 1498243
+                }
+            ];
+            const modality = "virtual";
+            let organization: OrganizationInterface | null = null;
+            //obtienes las organizaciones que esten en degree por modalidad ordenado por importancia
+            const organizations = await new OrganizationDatasourceImpl().getOrganizationsByImportance(universities.map(degree => degree.abbreviation), "virtual", true);
+            if (modality === "virtual") {
+                //si ecuentro UNIB en el listado este pasa a ser la organizacion principal
+                const hasUnib = organizations.find(organization => organization.abbreviation === "UNIB");
+                if (hasUnib) {organization = hasUnib};
+                //si no encuentro UNIB en el listado busco al padre de la universidad principal
+                if(organizations[0].parent){
+                    const parent = await new OrganizationDatasourceImpl().getActiveById(organizations[0].parent);
+                    if (parent) {organization = parent};
+                }
+            }
+            
+            console.log(organization);
+        } catch (error) {
+            console.log(error);
+        }
     }
 }

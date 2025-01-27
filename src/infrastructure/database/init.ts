@@ -17,6 +17,9 @@ import { MailerNotificationSequelize } from "./models/MailerNotification";
 import { MailerNotificationSeederExec } from "./migration/exec/mailerNotification.exec.seeder";
 import { MailerTemplateContentSequelize } from "./models/MailerTemplateContent";
 import { MailerTemplateContentSeederExec } from "./migration/exec/mailerTemplateContent.exec.seeder";
+import { ProgramMigrationSequelize } from "./models/ProgramMigration";
+import { VersionMigrationSequelize } from "./models/VersionMigration";
+import { ProgramMigrationSeederExec } from "./migration/exec/programMigration.exec.seeder";
 
 export const DbSequelize = async (): Promise<void> => {
     try {
@@ -36,12 +39,15 @@ export const DbSequelize = async (): Promise<void> => {
         await MailerContentSequelize.sync();
         await MailerNotificationSequelize.sync();
         await MailerTemplateContentSequelize.sync();
+        await ProgramMigrationSequelize.sync();
+        await VersionMigrationSequelize.sync();
 
         await new OrganizationSeederExec().up();
         await new MailerTemplateSeederExec().up();
         await new MailerContentSeederExec().up();
         await new MailerNotificationSeederExec().up();
         await new MailerTemplateContentSeederExec().up();
+        await new ProgramMigrationSeederExec().up();
     } catch (error) {
         throw error;
     }
