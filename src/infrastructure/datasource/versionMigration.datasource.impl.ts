@@ -25,6 +25,8 @@ export default class VersionMigrationImpl implements VersionMigrationDatasource 
                 deletedAt: version.deletedAt
             }
         } catch (error) {
+            console.log(error);
+            
             if (error instanceof CustomError) {
                 throw error;
             }

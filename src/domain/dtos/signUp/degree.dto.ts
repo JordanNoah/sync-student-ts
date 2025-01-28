@@ -5,7 +5,7 @@ export interface MapperInterfaceError {
 
 export default class DegreeDto {
     constructor(
-        public active: boolean,
+        public active: boolean | number,
         public status: string,
         public incidence: string,
         public abbreviation: string,

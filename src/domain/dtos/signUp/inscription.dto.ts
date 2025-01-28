@@ -11,21 +11,21 @@ export interface MapperInterfaceError {
 export default class InscriptionDto {
     constructor(
         public uuid: string,
-        public active: boolean,
+        public active: boolean | number,
         public status: string,
         public degrees: DegreeDto[],
         public language: string,
         public modality: string,
         public incidence: string,
-        public created_at: Date,
-        public started_at: Date,
+        public created_at: string,
+        public started_at: string,
         public enrollments: EnrollmentDto[],
-        public finished_at: Date,
+        public finished_at: string,
         public reference_id: number,
-        public registered_at: Date,
+        public registered_at: string,
         public academic_program: AcademicProgramDto,
         public introductory_module: IntroductoryModuleDto[],
-        public extension_finished_at: Date,
+        public extension_finished_at: string,
         public institution_abbreviation: string
     ) {}
 
@@ -165,15 +165,15 @@ export default class InscriptionDto {
                 object.language,
                 object.modality,
                 object.incidence,
-                new Date(object.created_at),
-                new Date(object.started_at),
+                object.created_at,
+                object.started_at,
                 enrollmentDtoList,
-                new Date(object.finished_at),
+                object.finished_at,
                 object.reference_id,
-                new Date(object.registered_at),
+                object.registered_at,
                 academicProgramDto!,
                 introductoryModuleDtoList,
-                new Date(object.extension_finished_at),
+                object.extension_finished_at,
                 object.institution_abbreviation
             ),
         ];

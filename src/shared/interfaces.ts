@@ -265,5 +265,5 @@ export interface ProgramMigrationInteface {
   createdAt?: Date;
   updatedAt?: Date;
   deletedAt?: Date | null;
-  versions?: VersionMigrationInterface[];
+  versions: VersionMigrationInterface[];
 }

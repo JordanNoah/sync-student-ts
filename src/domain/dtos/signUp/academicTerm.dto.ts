@@ -1,8 +1,8 @@
 import {MapperInterfaceError} from "../../../shared/interfaces";
 export default class AcademicTermDto {
     constructor(
-        public started_at: Date,
-        public finished_at: Date,
+        public started_at: string,
+        public finished_at: string,
         public study_model: string,
         public reference_id: number,
         public school_period: string
@@ -58,8 +58,8 @@ export default class AcademicTermDto {
         return [
             undefined,
             new AcademicTermDto(
-                new Date(object.started_at), // Convertimos a Date
-                new Date(object.finished_at), // Convertimos a Date
+                object.started_at, // Convertimos a Date
+                object.finished_at, // Convertimos a Date
                 object.study_model,
                 object.reference_id,
                 object.school_period

@@ -11,7 +11,8 @@ export default class AcademicProgramDto {
         public version: string,
         public language: string,
         public abbreviation: string,
-        public reference_id: number
+        public reference_id: number,
+        public is_scheduled: boolean | number,
     ) {}
 
     static create(object: { [key: string]: any }): [MapperInterfaceError?, AcademicProgramDto?] {
@@ -88,7 +89,8 @@ export default class AcademicProgramDto {
                 object.version,
                 object.language,
                 object.abbreviation,
-                object.reference_id
+                object.reference_id,
+                object.is_schedule,
             ),
         ];
     }

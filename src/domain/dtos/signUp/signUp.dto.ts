@@ -9,7 +9,7 @@ export default class SignUpDto {
     constructor(
         public uuid: string,
         public student: StudentDto,
-        public fired_at: Date,
+        public fired_at: string,
     ) {}
 
     static create(object: { [key: string]: any }): [MapperInterfaceError?, SignUpDto?] {
@@ -52,7 +52,7 @@ export default class SignUpDto {
             new SignUpDto(
                 object.uuid,
                 student!,
-                new Date(object.fired_at) // Convertimos a Date para garantizar la consistencia
+                object.fired_at // Convertimos a Date para garantizar la consistencia
             ),
         ];
     }

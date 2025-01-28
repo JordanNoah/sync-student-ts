@@ -72,6 +72,5 @@ ProgramMigrationSequelize.init({
     tableName: 'program_migration',
     timestamps: true,
     paranoid: true,
-    underscored: true,
-    modelName: 'ProgramMigrationSequelize'
+    underscored: true
 })

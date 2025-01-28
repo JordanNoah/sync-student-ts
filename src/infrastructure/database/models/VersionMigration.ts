@@ -38,31 +38,11 @@ VersionMigrationSequelize.init({
             model: ProgramMigrationSequelize,
             key: 'id',
         }
-    },
-    createdAt: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW,
-    },
-    updatedAt: {
-        type: DataTypes.DATE,
-        allowNull: true,
-    },
-    deletedAt: {
-        type: DataTypes.DATE,
-        allowNull: true,
-    },
+    }
 }, {
     sequelize,
     tableName: 'version_migration',
     timestamps: true,
     paranoid: true,
-    underscored: true,
-    modelName: 'VersionMigration',
-    indexes: [
-        {
-            unique: true,
-            fields: ['version'],
-        },
-    ],
+    underscored: true
 });

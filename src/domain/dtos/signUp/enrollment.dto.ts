@@ -11,7 +11,7 @@ export default class Enrollment {
     constructor(
         public uuid: string,
         public language: string,
-        public started_at: Date,
+        public started_at: string,
         public reference_id: number,
         public academic_term: AcademicTermDto,
         public academic_program: AcademicProgramDto,
@@ -118,7 +118,7 @@ export default class Enrollment {
             new Enrollment(
                 object.uuid,
                 object.language,
-                new Date(object.started_at), // Aseguramos conversión a Date
+                object.started_at, // Aseguramos conversión a Date
                 object.reference_id,
                 academicTermDto!,
                 academicProgramDto!,
