@@ -267,3 +267,24 @@ export interface ProgramMigrationInteface {
   deletedAt?: Date | null;
   versions: VersionMigrationInterface[];
 }
+
+export interface ProgramSpecialInterface {
+  id: number;
+  uuid: string;
+  abbreviation: string;
+  params: string | null;
+  createdAt?: Date;
+  updatedAt?: Date;
+  deletedAt?: Date | null;
+  versions: VersionSpecialInterface[];
+}
+
+export interface VersionSpecialInterface {
+  id: number;
+  version: string;
+  programSpecialId: number;
+  createdAt?: Date;
+  updatedAt?: Date;
+  deletedAt?: Date | null;
+  programMigration?: ProgramMigrationInteface;
+}

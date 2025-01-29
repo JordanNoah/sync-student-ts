@@ -18,8 +18,11 @@ import { MailerNotificationSeederExec } from "./migration/exec/mailerNotificatio
 import { MailerTemplateContentSequelize } from "./models/MailerTemplateContent";
 import { MailerTemplateContentSeederExec } from "./migration/exec/mailerTemplateContent.exec.seeder";
 import { ProgramMigrationSequelize } from "./models/ProgramMigration";
-import { VersionMigrationSequelize } from "./models/VersionMigration";
+import { VersionMigrationSequelize } from "./models/VersionMigrated";
 import { ProgramMigrationSeederExec } from "./migration/exec/programMigration.exec.seeder";
+import { ProgramSpecialSeederExec } from "./migration/exec/programSpecial.exec.seeder";
+import { ProgramSpecialSequelize } from "./models/ProgramSpecial";
+import { VersionSpecialSequelize } from "./models/VersionSpecial";
 
 export const DbSequelize = async (): Promise<void> => {
     try {
@@ -41,6 +44,8 @@ export const DbSequelize = async (): Promise<void> => {
         await MailerTemplateContentSequelize.sync();
         await ProgramMigrationSequelize.sync();
         await VersionMigrationSequelize.sync();
+        await ProgramSpecialSequelize.sync();
+        await VersionSpecialSequelize.sync();
 
         await new OrganizationSeederExec().up();
         await new MailerTemplateSeederExec().up();
@@ -48,6 +53,7 @@ export const DbSequelize = async (): Promise<void> => {
         await new MailerNotificationSeederExec().up();
         await new MailerTemplateContentSeederExec().up();
         await new ProgramMigrationSeederExec().up();
+        await new ProgramSpecialSeederExec().up();
     } catch (error) {
         throw error;
     }

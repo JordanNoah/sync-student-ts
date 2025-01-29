@@ -1,7 +1,7 @@
 import { VersionMigrationInterface } from "../../shared/interfaces";
 import VersionMigrationDatasource from "../../domain/datasource/versionMigration.datasource";
 import { CustomError } from "../../shared/errors/custom.error";
-import { VersionMigrationSequelize } from "../database/models/VersionMigration";
+import { VersionMigrationSequelize } from "../database/models/VersionMigrated";
 
 export default class VersionMigrationImpl implements VersionMigrationDatasource {
     async createVersionMigration(abbreviation: string, programMigrationId:number, params?: string): Promise<VersionMigrationInterface> {
