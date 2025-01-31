@@ -3,4 +3,5 @@ import { OrganizationInterface, ProgramMigrationInteface } from "@/shared/interf
 export default abstract class ProgramMigrationDatasource {
     abstract createProgramMigration(abbreviation:string, organization:OrganizationInterface, params?: string): Promise<ProgramMigrationInteface>
     abstract getMigratedProgram(abbreviation: string): Promise<ProgramMigrationInteface | null>
+    abstract programIsMigrated(abbreviation: string, version: string): Promise<boolean>
 }

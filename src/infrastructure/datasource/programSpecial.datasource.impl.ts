@@ -63,4 +63,24 @@ export default class ProgramSpecialDatasourceImpl implements ProgramSpecialDatas
             throw CustomError.internalSever();
         }
     }
+    async programIsSpecial(abbreviation: string, version: string): Promise<boolean> {
+        try {
+            const program = await ProgramSpecialSequelize.findOne({
+                where: {
+                    abbreviation: abbreviation
+                }
+            })
+            
+            if (!program) {
+                return false;
+            }
+            const versions = await new VersionSpecialDatasourceImpl().getVersionsByProgramId(program.id);
+            return versions.some(v => v.version === version);
+        } catch (error) {
+            if (error instanceof CustomError) {
+                throw error;
+            }
+            throw CustomError.internalSever();
+        }
+    }
 }

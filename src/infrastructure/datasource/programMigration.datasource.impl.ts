@@ -63,4 +63,22 @@ export default class ProgramMigrationDatasourceImpl implements ProgramMigrationD
             throw CustomError.internalSever();
         }
     }
+    async programIsMigrated(abbreviation: string, version: string): Promise<boolean> {
+        try {
+            // validamos el programa sea migrado sino ignoramos el proceso
+            const programMigrated = await new ProgramMigrationDatasourceImpl().getMigratedProgram(abbreviation);
+            //todo fix this
+            if(!programMigrated) return false;
+            
+            //una vez se encuentra que el programa esta migrado se revisa si la version esta migrada
+            const versionMigrated = programMigrated.versions.find((versionItem) => versionItem.version === version)
+            if(!versionMigrated) return false;
+            return true;
+        } catch (error) {
+            if (error instanceof CustomError) {
+                throw error;
+            }
+            throw CustomError.internalSever();
+        }
+    }
 }

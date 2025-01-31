@@ -3,4 +3,5 @@ import { OrganizationInterface, ProgramSpecialInterface } from "../../shared/int
 export default abstract class ProgramSpecialDatasource {
     abstract createProgramSpecial(abbreviation:string, organization:OrganizationInterface, params?: string): Promise<ProgramSpecialInterface>
     abstract getMigratedProgram(abbreviation: string): Promise<ProgramSpecialInterface | null>
+    abstract programIsSpecial(abbreviation: string, version: string): Promise<boolean>
 }
