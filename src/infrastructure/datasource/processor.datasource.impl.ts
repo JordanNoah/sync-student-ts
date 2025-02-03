@@ -182,61 +182,9 @@ export default class ProcessorDatasourceImpl implements ProcessorDatasource {
             const signUp:SignUpDto = {"uuid":"6f3dcaa7-bf89-400c-ab15-793cb0c99a1a","student":{"city":"","dni":"PIGN980903MNLRRR00","uuid":"5894e467-3b87-5503-be41-d20cdfcbe836","email":"niria.priegogu@anahuac.mx","phone":"8116068863","address":"Guadalupe #1103, Col. Jardines del Santuario","country":"MX","language":"es","password":"5nrbOTNW1X","last_name":"Priego Guarneros","user_name":"MXSNMNAD5883642","created_at":"2025-01-08T14:15:21.920593Z","first_name":"Niria Lorelu","inscriptions":[{"uuid":"434d3bcd-8202-5e3c-8856-35d7cc8540db","active":1,"status":"Activo","degrees":[{"active":1,"status":"Creada","incidence":" - ","abbreviation":"UEA","reference_id":1513250}],"language":"es","modality":"VIRTUAL","incidence":"Al Día","created_at":"2025-01-08T14:15:21.910906Z","started_at":"2024-08-09T00:00:00.000000Z","enrollments":[{"uuid":"e9d0c3c1-792f-59bd-ab21-001c05c47345","language":"es","started_at":"2024-08-05T16:48:15.000000Z","reference_id":588634,"academic_term":{"started_at":"2024-08-09T00:00:00.000000Z","finished_at":"2026-08-09T00:00:00.000000Z","study_model":"_SEMESTRE","reference_id":1,"school_period":"Funiber"},"academic_program":{"name":"Maestría en Actividad Física orientada a la Mujer","type":"Program","uuid":"9ac081eb-8041-5cb6-82b0-2a5c565247ec","version":"2024-TFC","language":"es","abbreviation":"DPMAFM","is_scheduled":0,"reference_id":1510},"academic_selections":[{"uuid":"b10873c4-4938-59d9-8175-6b2f3f4b290b","started_at":"2024-08-05T00:00:00.000000Z","admission_id":290618,"reference_id":992166,"academic_element":[{"name":"Estructura y Función del Cuerpo Humano","type":"Subject","uuid":"2632b229-3fef-5814-b9ad-c233f2ebec07","version":"SN039-vEA","language":null,"abbreviation":"SN039","reference_id":279532,"reference_type":"_OBLIGATORIO","reference_class":"AsignaturaVersion"}]},{"uuid":"1550f882-7351-54e3-92d1-a25b271c5732","started_at":"2024-08-05T00:00:00.000000Z","admission_id":290618,"reference_id":992167,"academic_element":[{"name":"Contextualización de la actividad física y el ejercicio en el marco de la salud","type":"Subject","uuid":"80c281fa-b339-5d45-89ee-41ea82498fc0","version":"SN155-vEA","language":null,"abbreviation":"SN155","reference_id":279546,"reference_type":"_OBLIGATORIO","reference_class":"AsignaturaVersion"}]},{"uuid":"1539cc88-e9f3-5482-a8b3-50b30b73daa8","started_at":"2024-08-05T00:00:00.000000Z","admission_id":290618,"reference_id":992168,"academic_element":[{"name":"Valoración de la condición física","type":"Subject","uuid":"8b4a99fe-f68a-517b-aba1-4aca3a11b186","version":"CDS104-vEA","language":null,"abbreviation":"CDS104","reference_id":279561,"reference_type":"_OBLIGATORIO","reference_class":"AsignaturaVersion"}]},{"uuid":"d20ef46c-2387-510b-95dd-948c40f8e5d2","started_at":"2024-08-05T00:00:00.000000Z","admission_id":290618,"reference_id":992169,"academic_element":[{"name":"Valoración del estado nutricional en embarazadas, niños y adolescentes","type":"Subject","uuid":"63fdfdf8-2510-585c-aa06-252ddc227838","version":"SN367-vEA","language":null,"abbreviation":"SN367","reference_id":279575,"reference_type":"_OBLIGATORIO","reference_class":"AsignaturaVersion"}]},{"uuid":"57aac86d-9cbb-5319-9db1-acadca9ce353","started_at":"2024-08-05T00:00:00.000000Z","admission_id":290618,"reference_id":992170,"academic_element":[{"name":"Evaluación del estado nutricional del deportista","type":"Subject","uuid":"ee486c0d-e5d0-5e4e-96d9-8e2f17e34e85","version":"SN325-vEA","language":null,"abbreviation":"SN325","reference_id":279589,"reference_type":"_OBLIGATORIO","reference_class":"AsignaturaVersion"}]},{"uuid":"d3347ff1-493c-590b-bdad-0afb52f6f402","started_at":"2024-08-05T00:00:00.000000Z","admission_id":290618,"reference_id":992171,"academic_element":[{"name":"Actividad física en la mujer","type":"Subject","uuid":"499a06ed-c97b-533e-a1cd-ea91bc1da040","version":"DP020-vEA","language":null,"abbreviation":"DP020","reference_id":279618,"reference_type":"_OBLIGATORIO","reference_class":"AsignaturaVersion"}]},{"uuid":"083a25e2-fefc-50ae-aad9-da88fef5e4e6","started_at":"2024-08-05T00:00:00.000000Z","admission_id":290618,"reference_id":992172,"academic_element":[{"name":"Influencia del ciclo menstrual en la práctica de la actividad física","type":"Subject","uuid":"399746f2-2610-5a0b-ad9c-ed2201df6537","version":"DP054-vEA","language":null,"abbreviation":"DP054","reference_id":279632,"reference_type":"_OBLIGATORIO","reference_class":"AsignaturaVersion"}]},{"uuid":"a40b7cdb-3dec-5e14-99ef-aa51eeffe264","started_at":"2024-08-05T00:00:00.000000Z","admission_id":290618,"reference_id":992173,"academic_element":[{"name":"Actividad física durante el Embarazo y periodo postparto","type":"Subject","uuid":"3d2652f3-1fd2-5cd1-a562-c713094877ca","version":"DP055-vEA","language":null,"abbreviation":"DP055","reference_id":279646,"reference_type":"_OBLIGATORIO","reference_class":"AsignaturaVersion"}]},{"uuid":"71fa454d-e3b5-54e2-8813-08ac21e4fa7b","started_at":"2024-08-05T00:00:00.000000Z","admission_id":290618,"reference_id":992174,"academic_element":[{"name":"Patologías comunes y actividad física en la Mujer","type":"Subject","uuid":"bdde2fc6-fa7c-58ad-b942-cee67194c2d3","version":"DP056-vEA","language":null,"abbreviation":"DP056","reference_id":279604,"reference_type":"_OBLIGATORIO","reference_class":"AsignaturaVersion"}]},{"uuid":"153f43f0-974f-5162-932b-7a3712d0b24a","started_at":"2024-08-05T00:00:00.000000Z","admission_id":290618,"reference_id":992175,"academic_element":[{"name":"El proceso de investigación en el ámbito de la Actividad Física y el Deporte","type":"Subject","uuid":"a929df5c-ceff-5883-8b57-23e368cc41e4","version":"DP2551-vEA","language":null,"abbreviation":"DP2551","reference_id":279764,"reference_type":"_OBLIGATORIO","reference_class":"AsignaturaVersion"}]},{"uuid":"7e5ccf2e-0ccb-51d5-9e7d-694ed5dba5a2","started_at":"2024-08-05T00:00:00.000000Z","admission_id":290618,"reference_id":992176,"academic_element":[{"name":"Lesiones deportivas en la mujer","type":"Subject","uuid":"dcd07d86-4895-5915-ac4b-fc3b8ffc34f7","version":"DP057-vEA","language":null,"abbreviation":"DP057","reference_id":279690,"reference_type":"_OBLIGATORIO","reference_class":"AsignaturaVersion"}]},{"uuid":"8413672c-e3f0-589a-9d44-df51a353ba27","started_at":"2024-08-05T00:00:00.000000Z","admission_id":290618,"reference_id":992177,"academic_element":[{"name":"Mujer y rendimiento deportivo","type":"Subject","uuid":"bc8a3252-e6ae-5e1d-b1f9-cff779b6027e","version":"DP058-vEA","language":null,"abbreviation":"DP058","reference_id":279704,"reference_type":"_OBLIGATORIO","reference_class":"AsignaturaVersion"}]},{"uuid":"36b9f48d-f136-57b1-97b0-075079b4b132","started_at":"2024-08-05T00:00:00.000000Z","admission_id":290618,"reference_id":992178,"academic_element":[{"name":"Tendencias de entrenamiento en la mujer","type":"Subject","uuid":"f4647adf-9e6f-549f-92db-e994453a3bc2","version":"DP059-vEA","language":null,"abbreviation":"DP059","reference_id":279718,"reference_type":"_OBLIGATORIO","reference_class":"AsignaturaVersion"}]}]}],"finished_at":"2026-08-09T00:00:00.000000Z","reference_id":285418,"registered_at":"2024-07-31T00:00:00.000000Z","academic_program":{"name":"Maestría en Actividad Física orientada a la Mujer","type":"Program","uuid":"9ac081eb-8041-5cb6-82b0-2a5c565247ec","version":"2023","language":"es","abbreviation":"DDNGI","is_scheduled":0,"reference_id":1510},"introductory_module":[],"extension_finished_at":"2026-08-09T00:00:00.000000Z","institution_abbreviation":"FBR"}],"reference_id":5883642,"institution_abbreviation":"FBR"},"fired_at":"2025-01-08T15:42:03.762271Z"}
             for (let i = 0; i < signUp.student.inscriptions.length; i++) {
                 const element = signUp.student.inscriptions[i];
-                const modality = element.modality;
-
-                let organization: OrganizationInterface | null = null;
-                //obtienes las organizaciones que esten en degree por modalidad ordenado por importancia
-                const organizations = await new OrganizationDatasourceImpl().getOrganizationsByImportance(element.degrees.map(degree => degree.abbreviation), "virtual", true);
-                if (modality.toLowerCase() === "virtual") {
-                    //si ecuentro UNIB en el listado este pasa a ser la organizacion principal
-                    const hasUnib = organizations.find(organization => organization.abbreviation === "UNIB");
-                    if (hasUnib) {organization = hasUnib};
-                    //si no encuentro UNIB en el listado busco al padre de la universidad principal
-                    if(organizations[0].parent){
-                        const parent = await new OrganizationDatasourceImpl().getActiveById(organizations[0].parent);
-                        if (parent) {organization = parent};
-                    }
-                    
-                    const programIsMigrated = await new ProgramMigrationDatasourceImpl().programIsMigrated(element.academic_program.abbreviation, element.academic_program.version);
-                    
-                    if(programIsMigrated){
-                        if (element.academic_program.is_scheduled) {
-                            //si es calendarizado
-                        } else if (element.academic_program.abbreviation == "fi") {
-                            //si es fi para pasarlo a la organizacion de TODO
-                        } else{
-                            //revisar si la fecha de registro es mayor > a 2024
-                            if (!(new Date(element.registered_at).getFullYear() >= 2024)){
-                                // si la organizacion no es UNIB
-                                if (organization?.abbreviation != "UNIB"){
-                                    const unibOrganization = await new OrganizationDatasourceImpl().getInstitutionByModalityAndAbbreviation(modality, "UNIB", true);
-                                    if (unibOrganization) {
-                                        organization = unibOrganization;
-                                    }else{
-                                        throw new Error("Institution unib disabled");
-                                    }
-                                }
-                            }else{
-                                const programIsSpecial = await new ProgramSpecialDatasourceImpl().programIsSpecial(element.academic_program.abbreviation, element.academic_program.version);
-                                if(programIsSpecial){
-                                    //si es especial
-                                    const organizationFbr = await new OrganizationDatasourceImpl().getInstitutionByModalityAndAbbreviation(modality, signUp.student.institution_abbreviation, true);
-                                    if (organizationFbr) {
-                                        organization = organizationFbr;
-                                    }else{
-                                        throw new Error("Institution fbr disabled");
-                                    }
-                                }else{
-                                    throw new Error("Programa no especial");
-                                }
-                            }
-                        }
-                    }else{
-                        throw new Error("Programa no migrado");
-                    }
-                }
-
+                const organization = await new OrganizationDatasourceImpl().getSignUpOrganization(element)
                 console.log(organization);
+                
             }
         } catch (error) {
             console.log(error);

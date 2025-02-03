@@ -4,6 +4,10 @@ import { CustomError } from "../../shared/errors/custom.error";
 import { OrganizationInterface } from "../../shared/interfaces";
 import { OrganizationSequelize } from "../database/models/Organization";
 import { FindOptions, Op } from "sequelize";
+import SignUpDto from "@/domain/dtos/signUp/signUp.dto";
+import InscriptionDto from "@/domain/dtos/signUp/inscription.dto";
+import ProgramMigrationDatasourceImpl from "./programMigration.datasource.impl";
+import ProgramSpecialDatasourceImpl from "./programSpecial.datasource.impl";
 
 export default class OrganizationDatasourceImpl extends OrganizationDatasource {
     async createInstitution(organizationDto: OrganizationDto): Promise<OrganizationInterface> {
@@ -58,11 +62,11 @@ export default class OrganizationDatasourceImpl extends OrganizationDatasource {
             throw CustomError.internalSever();
         }
     }
-    async getInstitutionByModalityAndAbbreviation(modality: string, abbreviation: string, available:boolean): Promise<OrganizationInterface | null> {
+    async getInstitutionByModalityAndAbbreviation(modality: string, abbreviation: string, available: boolean): Promise<OrganizationInterface | null> {
         try {
             const organization = await OrganizationSequelize.findOne({
                 where: {
-                    abbreviation,
+                    abbreviation: abbreviation.toUpperCase(),
                     modality,
                     available: available
                 }
@@ -164,6 +168,79 @@ export default class OrganizationDatasourceImpl extends OrganizationDatasource {
                     id: organization.id,
                 }
             })
+        } catch (error) {
+            if (error instanceof CustomError) {
+                throw error;
+            }
+            throw CustomError.internalSever();
+        }
+    }
+    async getSignUpOrganization(inscriptionDto: InscriptionDto): Promise<OrganizationInterface> {
+        try {
+            const element = inscriptionDto;
+            const modality = element.modality;
+
+            let organization: OrganizationInterface | null = null;
+            //obtienes las organizaciones que esten en degree por modalidad ordenado por importancia
+            const organizations = await this.getOrganizationsByImportance(element.degrees.map(degree => degree.abbreviation), "virtual", true);
+            if (modality.toLowerCase() === "virtual") {
+                //si ecuentro UNIB en el listado este pasa a ser la organizacion principal
+                const hasUnib = organizations.find(organization => organization.abbreviation === "UNIB");
+                if (hasUnib) { organization = hasUnib };
+                //si no encuentro UNIB en el listado busco al padre de la universidad principal
+                if (organizations[0].parent) {
+                    const parent = await this.getActiveById(organizations[0].parent);
+                    if (parent) { organization = parent };
+                }
+
+                const programIsMigrated = await new ProgramMigrationDatasourceImpl().programIsMigrated(element.academic_program.abbreviation, element.academic_program.version);
+
+                if (programIsMigrated) {
+                    if (element.academic_program.is_scheduled) {
+                        //si es calendarizado
+                        if (!hasUnib) {
+                            //si es especial
+                            const organizationFbr = await this.getInstitutionByModalityAndAbbreviation(modality, "fbr", true);
+                            if (organizationFbr) {
+                                organization = organizationFbr;
+                            } else {
+                                throw new Error("Institution fbr disabled");
+                            }
+                        }
+                    } else {
+                        if (!(new Date(element.registered_at).getFullYear() >= 2024)) {
+                            // si la organizacion no es UNIB
+                            if (organization?.abbreviation != "UNIB") {
+                                const unibOrganization = await this.getInstitutionByModalityAndAbbreviation(modality, "UNIB", true);
+                                if (unibOrganization) {
+                                    organization = unibOrganization;
+                                } else {
+                                    throw new Error("Institution unib disabled");
+                                }
+                            }
+                        } else {
+                            const programIsSpecial = await new ProgramSpecialDatasourceImpl().programIsSpecial(element.academic_program.abbreviation, element.academic_program.version);
+                            if (programIsSpecial) {
+                                //si es especial
+                                const organizationFbr = await this.getInstitutionByModalityAndAbbreviation(modality, "fbr", true);
+                                if (organizationFbr) {
+                                    organization = organizationFbr;
+                                } else {
+                                    throw new Error("Institution fbr disabled");
+                                }
+                            } else {
+                                throw new Error("Programa no especial");
+                            }
+                        }
+                    }
+                } else {
+                    throw new Error("Programa no migrado");
+                }
+            } else {
+                throw new Error("Modalidad presencial no implementada");
+            }
+            if (!organization) throw new Error("Organization not evaluated");
+            return organization;
         } catch (error) {
             if (error instanceof CustomError) {
                 throw error;
